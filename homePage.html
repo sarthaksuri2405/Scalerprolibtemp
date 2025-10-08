@@ -1,573 +1,526 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scaler Project Library</title>
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts: Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scaler Project Library - Home</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 
-	<style>
-		/* Applying the Inter font family */
-		body {
-			font-family: 'Inter', sans-serif;
-			background-color: #0D1117; /* New: Dark background */
-		}
+    <style>
+        /* Applying the Inter font family */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0D1117; /* New: Dark background */
+        }
 
-		/* Hero section background */
-		.hero-bg {
-			background-image: url('https://images.unsplash.com/photo-1550745165-9bc0b252726a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3');
-			background-size: cover;
-			background-position: center;
-			position: relative;
-		}
-
-		/* New: Darker overlay */
-		.hero-bg::before {
-			content: '';
-			position: absolute;
-			top: 0; left: 0; right: 0; bottom: 0;
-			background: linear-gradient(to right, rgba(13, 17, 23, 0.9), rgba(13, 17, 23, 0.6));
-		}
-
-		/* Floating animation for the visual element */
-		@keyframes float {
-			0% { transform: translateY(0px); }
-			50% { transform: translateY(-20px); }
-			100% { transform: translateY(0px); }
-		}
-
-		.hero-visual {
-			filter: drop-shadow(0 0 2rem rgba(57, 211, 187, 0.4));
-			animation: float 6s ease-in-out infinite;
-		}
-
-		/* New: Search bar styles for dark mode */
-		.search-wrapper {
-			position: relative;
-			border-radius: 10px;
-			overflow: hidden;
-			transition: box-shadow 0.3s ease-in-out;
-		}
-
-		.search-wrapper::before {
-			content: '';
-			position: absolute;
-			top: -50%;
-			left: -50%;
-			width: 200%;
-			height: 200%;
-			background: conic-gradient(
-				from 180deg at 50% 50%,
-				#3B82F6 0%,
-				#39D3BB 50%,
-				#3B82F6 100%
-			);
-			animation: rotate-border 4s linear infinite;
-			opacity: 0;
-			transition: opacity 0.3s ease-in-out;
-		}
-
-		.search-wrapper:focus-within {
-			box-shadow: 0 0 12px rgba(57, 211, 187, 0.4);
-		}
-
-		.search-wrapper:focus-within::before {
-			opacity: 1;
-		}
-
-		.search-inner {
-			position: relative;
-			margin: 2px;
-			display: flex;
-			align-items: center;
-			background-color: #0D1117; /* Dark background for search input */
-			border-radius: 8px;
-			padding: 0.375rem 0.75rem;
-		}
-
-		@keyframes rotate-border {
-			0% { transform: rotate(0deg); }
-			100% { transform: rotate(360deg); }
-		}
-
-		/* Card hover effect */
-		.project-card {
-			transition: transform 0.3s ease, box-shadow 0.3s ease;
-		}
-		.project-card:hover {
-			transform: translateY(-8px);
-			box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.2), 0 8px 10px -6px rgb(0 0 0 / 0.2);
-		}
-
-		/* Custom scrollbar for horizontal scrolling section */
-		.horizontal-scroll {
-			scrollbar-width: thin;
-			scrollbar-color: #30363D #161B22;
-		}
-		.horizontal-scroll::-webkit-scrollbar {
-			height: 6px;
-		}
-		.horizontal-scroll::-webkit-scrollbar-track {
-			background: #161B22;
-			border-radius: 3px;
-		}
-		.horizontal-scroll::-webkit-scrollbar-thumb {
-			background-color: #30363D;
-			border-radius: 3px;
-		}
+        /* Hero section background */
+        .hero-bg {
+            background-image: url('https://images.unsplash.com/photo-1550745165-9bc0b252726a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
         
-		/* New: Header scroll effect for dark mode */
-		#main-header.scrolled {
-			background-color: rgba(13, 17, 23, 0.85);
-			backdrop-filter: blur(10px);
-			border-bottom: 1px solid #30363D;
-			box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-		}
-		#main-header.scrolled .nav-text, #main-header.scrolled .nav-icon {
-			color: #E6EDF3;
-		}
+        /* New: Darker overlay */
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to right, rgba(13, 17, 23, 0.9), rgba(13, 17, 23, 0.6));
+        }
         
-		/* Entry animations */
-		@keyframes fadeInUp {
-			from { opacity: 0; transform: translateY(20px); }
-			to { opacity: 1; transform: translateY(0); }
-		}
-		.animate-fade-in-up {
-			animation: fadeInUp 0.8s ease-out forwards;
-		}
-		.delay-100 { animation-delay: 100ms; }
-		.delay-200 { animation-delay: 200ms; }
-		.delay-300 { animation-delay: 300ms; }
-		.delay-400 { animation-delay: 400ms; }
-		.delay-500 { animation-delay: 500ms; }
-	</style>
+        /* Floating animation for the visual element */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .hero-visual {
+            filter: drop-shadow(0 0 2rem rgba(57, 211, 187, 0.4));
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* New: Search bar styles for dark mode */
+        .search-wrapper {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: box-shadow 0.3s ease-in-out;
+        }
+
+        .search-wrapper::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(
+                from 180deg at 50% 50%,
+                #3B82F6 0%,
+                #39D3BB 50%,
+                #3B82F6 100%
+            );
+            animation: rotate-border 4s linear infinite;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+        
+        .search-wrapper:focus-within {
+            box-shadow: 0 0 12px rgba(57, 211, 187, 0.4);
+        }
+        
+        .search-wrapper:focus-within::before {
+            opacity: 1;
+        }
+
+        .search-inner {
+            position: relative;
+            margin: 2px;
+            display: flex;
+            align-items: center;
+            background-color: #0D1117; /* Dark background for search input */
+            border-radius: 8px;
+            padding: 0.375rem 0.75rem;
+        }
+        
+        @keyframes rotate-border {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Card hover effect */
+        .project-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.2), 0 8px 10px -6px rgb(0 0 0 / 0.2);
+        }
+
+        /* Custom scrollbar for horizontal scrolling section */
+        .horizontal-scroll {
+            scrollbar-width: thin;
+            scrollbar-color: #30363D #161B22;
+        }
+        .horizontal-scroll::-webkit-scrollbar {
+            height: 6px;
+        }
+        .horizontal-scroll::-webkit-scrollbar-track {
+            background: #161B22;
+            border-radius: 3px;
+        }
+        .horizontal-scroll::-webkit-scrollbar-thumb {
+            background-color: #30363D;
+            border-radius: 3px;
+        }
+        
+        /* New: Header scroll effect for dark mode */
+        #main-header.scrolled {
+            background-color: rgba(13, 17, 23, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #30363D;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+        #main-header.scrolled .nav-text, #main-header.scrolled .nav-icon {
+            color: #E6EDF3;
+        }
+        
+        /* Entry animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
+        .delay-300 { animation-delay: 300ms; }
+        .delay-400 { animation-delay: 400ms; }
+        .delay-500 { animation-delay: 500ms; }
+    </style>
 </head>
 <body class="bg-[#0D1117] text-[#E6EDF3]">
 
-    <!-- Header -->
-	<header id="main-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
-		<nav class="container mx-auto px-4 sm:px-6 lg:px-8 py-3">
-            <div class="flex items-center justify-between">
-                <!-- Left Side: Logo & Nav -->
-                <div class="flex items-center space-x-8">
-                    <!-- Scaler Logo -->
-                    <a href="#" class="flex items-center space-x-2">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="#3B82F6"></path>
-                            <path d="M2 17L12 22L22 17" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                            <path d="M2 12L12 17L22 12" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                        </svg>
-                        <span class="font-bold text-xl text-white">Scaler</span>
-                    </a>
-                    <!-- Navigation Links -->
-				<div class="hidden md:flex items-center space-x-6 text-sm">
-					<a href="#" class="font-semibold text-white hover:text-[#39D3BB] transition nav-text">Home</a>
-					<a href="#" class="font-semibold text-white hover:text-[#39D3BB] transition nav-text">Projects & People</a>
-				</div>
-				<!-- Mobile menu button -->
-				<div class="md:hidden">
-					<button id="mobile-menu-button" aria-expanded="false" aria-controls="mobile-menu" class="p-2 rounded-md text-[#8B949E] bg-transparent hover:bg-[#161B22] focus:outline-none focus:ring-2 focus:ring-[#39D3BB]">
-						<svg id="mobile-menu-open" class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-						</svg>
-						<svg id="mobile-menu-close" class="w-6 h-6 hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-						</svg>
-					</button>
-				</div>
-                </div>
-                <!-- Right Side: Icons & Profile -->
-                <div class="flex items-center space-x-4">
-                    <!-- Store Icon -->
-                    <a href="#" class="hidden sm:flex items-center justify-center w-10 h-10 rounded-lg bg-[#161B22] hover:bg-[#21262D] transition text-[#8B949E] hover:text-white nav-icon" title="Store">
-                        <i data-lucide="store" class="w-5 h-5"></i>
-                    </a>
+    <!-- Header -->
+    <header id="main-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <nav class="container mx-auto px-6 py-3">
+            <div class="flex items-center justify-between">
+                <!-- Left Side: Logo & Nav -->
+                <div class="flex items-center space-x-8">
+                    <!-- Scaler Logo -->
+                    <a href="home.html" class="flex items-center space-x-2">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="#3B82F6"></path>
+                            <path d="M2 17L12 22L22 17" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M2 12L12 17L22 12" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                        <span class="font-bold text-xl text-white">Scaler</span>
+                    </a>
+                    <!-- Navigation Links -->
+                    <div class="hidden md:flex items-center space-x-6 text-sm">
+                        <a href="home.html" class="font-semibold text-white hover:text-[#39D3BB] transition nav-text">Home</a>
+                        <a href="#" class="font-semibold text-white hover:text-[#39D3BB] transition nav-text">Projects & People</a>
+                    </div>
+                </div>
+                <!-- Right Side: Icons & Profile -->
+                <div class="flex items-center space-x-4">
+                    <!-- Store Icon -->
+                    <a href="#" class="hidden sm:flex items-center justify-center w-10 h-10 rounded-lg bg-[#161B22] hover:bg-[#21262D] transition text-[#8B949E] hover:text-white nav-icon" title="Store">
+                        <i data-lucide="store" class="w-5 h-5"></i>
+                    </a>
 
-			<!-- Refer Icon -->
-			<a href="#" class="hidden sm:flex items-center justify-center w-10 h-10 rounded-lg bg-[#161B22] hover:bg-[#21262D] transition text-[#8B949E] hover:text-white nav-icon" title="Refer & Earn">
-                        <i data-lucide="gift" class="w-5 h-5"></i>
-                    </a>
+                    <!-- Refer Icon -->
+                     <a href="#" class="hidden sm:flex items-center justify-center w-10 h-10 rounded-lg bg-[#161B22] hover:bg-[#21262D] transition text-[#8B949E] hover:text-white nav-icon" title="Refer & Earn">
+                         <i data-lucide="gift" class="w-5 h-5"></i>
+                    </a>
 
-                    <!-- Search Bar -->
-                    <div class="hidden lg:block search-wrapper">
-                        <div class="search-inner">
-                            <i data-lucide="search" class="w-4 h-4 text-[#8B949E]"></i>
-                            <input type="text" placeholder="Search for projects..." class="ml-2 bg-transparent focus:outline-none text-sm w-48 text-[#E6EDF3] placeholder:text-[#8B949E]">
-                            <i data-lucide="sliders-horizontal" class="w-4 h-4 text-[#8B949E] cursor-pointer hover:text-white"></i>
-                        </div>
-                    </div>
-                    
-                    <!-- Profile Dropdown -->
-                    <div class="relative" id="profile-menu-container">
-                        <button id="profile-menu-button" class="w-10 h-10 rounded-full overflow-hidden border-2 border-transparent hover:border-[#39D3BB] transition">
-                            <img src="https://i.pravatar.cc/100?u=a042581f4e29026704d" alt="User Avatar">
-                        </button>
-                        <!-- Dropdown Menu -->
-                        <div id="profile-menu" class="hidden absolute right-0 mt-2 w-48 bg-[#161B22] rounded-lg shadow-xl border border-[#30363D] py-1">
-                            <a href="#" class="flex items-center px-4 py-2 text-sm text-[#58A6FF] hover:bg-[#21262D] font-semibold">
-                                <i data-lucide="upload-cloud" class="w-4 h-4 mr-2"></i>
-                                Upload Project
-                            </a>
-                            <div class="border-t border-[#30363D] my-1"></div>
-											<a href="ProfileCard.html" class="block px-4 py-2 text-sm text-[#E6EDF3] hover:bg-[#21262D]">View Profile</a>
-											<a href="ProfileCard.html" class="block px-4 py-2 text-sm text-[#E6EDF3] hover:bg-[#21262D]">My Projects</a>
-                            <div class="border-t border-[#30363D] my-1"></div>
-                            <a href="#" class="block px-4 py-2 text-sm text-red-500 hover:bg-red-500/10">Logout</a>
-                        </div>
-                    </div>
-                </div>
-			</div>
-			<!-- Mobile menu, show/hide with JS -->
-			<div id="mobile-menu" class="md:hidden hidden">
-				<div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-[#0D1117] border-t border-[#1f2430]">
-					<a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-[#161B22]">Home</a>
-					<a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-[#161B22]">Projects & People</a>
-				</div>
-			</div>
-		</nav>
-    </header>
+                    <!-- Search Bar -->
+                    <div class="hidden lg:block search-wrapper">
+                        <div class="search-inner">
+                            <i data-lucide="search" class="w-4 h-4 text-[#8B949E]"></i>
+                            <input type="text" placeholder="Search for projects..." class="ml-2 bg-transparent focus:outline-none text-sm w-48 text-[#E6EDF3] placeholder:text-[#8B949E]">
+                            <i data-lucide="sliders-horizontal" class="w-4 h-4 text-[#8B949E] cursor-pointer hover:text-white"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- Profile Dropdown -->
+                    <div class="relative" id="profile-menu-container">
+                        <button id="profile-menu-button" class="w-10 h-10 rounded-full overflow-hidden border-2 border-transparent hover:border-[#39D3BB] transition">
+                            <img src="https://i.pravatar.cc/100?u=a042581f4e29026704d" alt="User Avatar">
+                        </button>
+                        <!-- Dropdown Menu -->
+                        <div id="profile-menu" class="hidden absolute right-0 mt-2 w-48 bg-[#161B22] rounded-lg shadow-xl border border-[#30363D] py-1">
+                            <a href="#" class="flex items-center px-4 py-2 text-sm text-[#58A6FF] hover:bg-[#21262D] font-semibold">
+                                <i data-lucide="upload-cloud" class="w-4 h-4 mr-2"></i>
+                                Upload Project
+                            </a>
+                            <div class="border-t border-[#30363D] my-1"></div>
+                            <a href="index.html" class="block px-4 py-2 text-sm text-[#E6EDF3] hover:bg-[#21262D]">View Profile</a>
+                            <a href="index.html" class="block px-4 py-2 text-sm text-[#E6EDF3] hover:bg-[#21262D]">My Projects</a>
+                            <div class="border-t border-[#30363D] my-1"></div>
+                            <a href="#" class="block px-4 py-2 text-sm text-red-500 hover:bg-red-500/10">Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
 
-	<main class="pt-20">
-        <!-- Hero Section -->
-	<section class="hero-bg relative w-full min-h-[60vh] md:min-h-screen flex items-center">
-            <div class="container mx-auto px-6 relative z-10 grid md:grid-cols-2 items-center gap-12">
-                <!-- Left: Text Content -->
-                <div class="text-white text-center md:text-left pt-24 md:pt-0">
-				<div class="opacity-0 animate-fade-in-up">
-                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight">Explore Innovative Projects from Scaler Learners</h1>
-                    </div>
-                    <div class="opacity-0 animate-fade-in-up delay-200">
-                        <p class="mt-6 max-w-xl mx-auto md:mx-0 text-lg lg:text-xl text-[#8B949E]">Discover ongoing and top-rated projects built by the Scaler community. Dive in to get inspired, collaborate, and showcase your own work.</p>
-                    </div>
-                </div>
-                <!-- Right: Visual Element -->
-				<div class="hidden lg:flex justify-center items-center">
-					<div class="opacity-0 animate-fade-in-up delay-400 hero-visual">
-						<i data-lucide="layout-grid" class="w-48 h-48 lg:w-80 lg:h-80 text-[#39D3BB]/70"></i>
-					</div>
-				</div>
-            </div>
-        </section>
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-bg relative w-full min-h-[80vh] md:min-h-screen flex items-center">
+            <div class="container mx-auto px-6 relative z-10 grid md:grid-cols-2 items-center gap-12">
+                <!-- Left: Text Content -->
+                <div class="text-white text-center md:text-left pt-24 md:pt-0">
+                    <div class="opacity-0 animate-fade-in-up">
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight">Explore Innovative Projects from Scaler Learners</h1>
+                    </div>
+                    <div class="opacity-0 animate-fade-in-up delay-200">
+                        <p class="mt-6 max-w-xl mx-auto md:mx-0 text-lg lg:text-xl text-[#8B949E]">Discover ongoing and top-rated projects built by the Scaler community. Dive in to get inspired, collaborate, and showcase your own work.</p>
+                    </div>
+                </div>
+                <!-- Right: Visual Element -->
+                <div class="hidden md:flex justify-center items-center">
+                    <div class="opacity-0 animate-fade-in-up delay-400 hero-visual">
+                        <i data-lucide="layout-grid" class="w-64 h-64 lg:w-80 lg:h-80 text-[#39D3BB]/70"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        <!-- Top Ongoing Projects Section -->
-        <section class="py-20">
-            <div class="container mx-auto px-6">
-                <div class="opacity-0 animate-fade-in-up delay-300">
-                    <h2 class="text-3xl font-bold text-white mb-8 flex items-center">
-                        <i data-lucide="trending-up" class="w-8 h-8 mr-3 text-[#39D3BB]"></i>
-                        Top Ongoing Projects
-                    </h2>
-                </div>
-                <div class="opacity-0 animate-fade-in-up delay-400">
-                    <div class="flex space-x-6 overflow-x-auto pb-6 -mx-6 px-6 horizontal-scroll">
-                        <!-- Project Card 1 -->
-				<div class="project-card flex-shrink-0 min-w-[18rem] sm:min-w-[20rem] bg-[#161B22] rounded-xl shadow-lg border border-[#30363D] overflow-hidden">
-                            <img class="h-40 w-full object-cover" src="https://placehold.co/600x400/0D1117/39D3BB?text=Analytics+UI" alt="AI-driven Analytics Platform">
-                            <div class="p-5">
-                                <h3 class="text-lg font-bold text-white">AI-driven Analytics Platform</h3>
-                                <p class="text-sm text-[#8B949E] mt-1">by Anisha Bhan</p>
-                                <div class="mt-4">
-                                    <div class="flex justify-between mb-1">
-                                        <span class="text-sm font-medium text-[#8B949E]">In Progress</span>
-                                        <span class="text-sm font-medium text-white">75%</span>
-                                    </div>
-                                    <div class="w-full bg-[#30363D] rounded-full h-2.5">
-                                        <div class="bg-green-500 h-2.5 rounded-full" style="width: 75%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Project Card 2 -->
-				<div class="project-card flex-shrink-0 min-w-[18rem] sm:min-w-[20rem] bg-[#161B22] rounded-xl shadow-lg border border-[#30363D] overflow-hidden">
-                            <img class="h-40 w-full object-cover" src="https://placehold.co/600x400/0D1117/3B82F6?text=Eco+App" alt="Eco-Cycle Reminder App">
-                            <div class="p-5">
-                                <h3 class="text-lg font-bold text-white">Eco-Cycle Reminder App</h3>
-                                <p class="text-sm text-[#8B949E] mt-1">by Amit Sharma</p>
-                                <div class="mt-4">
-                                    <div class="flex justify-between mb-1">
-                                        <span class="text-sm font-medium text-[#8B949E]">In Progress</span>
-                                        <span class="text-sm font-medium text-white">40%</span>
-                                    </div>
-                                    <div class="w-full bg-[#30363D] rounded-full h-2.5">
-                                        <div class="bg-yellow-500 h-2.5 rounded-full" style="width: 40%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Project Card 3 -->
-				 <div class="project-card flex-shrink-0 min-w-[18rem] sm:min-w-[20rem] bg-[#161B22] rounded-xl shadow-lg border border-[#30363D] overflow-hidden">
-                            <img class="h-40 w-full object-cover" src="https://placehold.co/600x400/0D1117/8B949E?text=Robotics" alt="Automated Sorting Bot">
-                            <div class="p-5">
-                                <h3 class="text-lg font-bold text-white">Automated Sorting Bot</h3>
-                                <p class="text-sm text-[#8B949E] mt-1">by Dev Chaturvedi</p>
-                                <div class="mt-4">
-                                    <div class="flex justify-between mb-1">
-                                        <span class="text-sm font-medium text-[#8B949E]">In Progress</span>
-                                        <span class="text-sm font-medium text-white">60%</span>
-                                    </div>
-                                    <div class="w-full bg-[#30363D] rounded-full h-2.5">
-                                        <div class="bg-blue-500 h-2.5 rounded-full" style="width: 60%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Project Card 4 -->
-				<div class="project-card flex-shrink-0 min-w-[18rem] sm:min-w-[20rem] bg-[#161B22] rounded-xl shadow-lg border border-[#30363D] overflow-hidden">
-                            <img class="h-40 w-full object-cover" src="https://placehold.co/600x400/0D1117/ef4444?text=Health+Dashboard" alt="Health Monitoring Dashboard">
-                            <div class="p-5">
-                                <h3 class="text-lg font-bold text-white">Health Monitoring Dashboard</h3>
-                                <p class="text-sm text-[#8B949E] mt-1">by Priya Singh</p>
-                                <div class="mt-4">
-                                    <div class="flex justify-between mb-1">
-                                        <span class="text-sm font-medium text-[#8B949E]">In Progress</span>
-                                        <span class="text-sm font-medium text-white">90%</span>
-                                    </div>
-                                    <div class="w-full bg-[#30363D] rounded-full h-2.5">
-                                        <div class="bg-red-500 h-2.5 rounded-full" style="width: 90%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Top Rated Finished Projects Section -->
-        <section class="py-20 bg-[#161B22] border-y border-[#30363D]">
-            <div class="container mx-auto px-6">
-                <div class="opacity-0 animate-fade-in-up delay-500">
-                    <h2 class="text-3xl font-bold text-white mb-8 flex items-center">
-                        <i data-lucide="award" class="w-8 h-8 mr-3 text-yellow-400"></i>
-                        Top Rated Finished Projects
-                    </h2>
-                </div>
-                <div class="opacity-0 animate-fade-in-up" style="animation-delay: 600ms;">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                        <!-- Project Card 1 -->
-                        <div class="project-card bg-[#0D1117] rounded-xl shadow-lg border border-[#30363D] overflow-hidden group">
-                            <div class="relative">
-                                <img class="h-48 w-full object-cover" src="https://placehold.co/600x400/161B22/fb923c?text=FlavorQuest" alt="FlavorQuest">
-                                <div class="absolute top-3 right-3 bg-black/50 text-white px-2 py-1 rounded-full text-xs font-bold flex items-center space-x-1">
-                                    <i data-lucide="star" class="w-3 h-3 fill-yellow-400 text-yellow-400"></i>
-                                    <span>4.9</span>
-                                </div>
-                            </div>
-                            <div class="p-5">
-                                <h3 class="text-lg font-bold text-white">FlavorQuest</h3>
-                                <p class="text-sm text-[#8B949E] mt-1">by Aakash Gupta</p>
-                                <div class="mt-4 flex flex-wrap gap-2">
-                                    <span class="bg-[#21262D] text-[#8B949E] text-xs font-semibold px-2.5 py-1 rounded-full">React</span>
-                                    <span class="bg-[#21262D] text-[#8B949E] text-xs font-semibold px-2.5 py-1 rounded-full">Node.js</span>
-                                    <span class="bg-[#21262D] text-[#8B949E] text-xs font-semibold px-2.5 py-1 rounded-full">MongoDB</span>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Project Card 2 -->
-                        <div class="project-card bg-[#0D1117] rounded-xl shadow-lg border border-[#30363D] overflow-hidden group">
-                            <div class="relative">
-                                <img class="h-48 w-full object-cover" src="https://placehold.co/600x400/161B22/93c5fd?text=Neural+Net" alt="Deep Learning Image Classifier">
-                                <div class="absolute top-3 right-3 bg-black/50 text-white px-2 py-1 rounded-full text-xs font-bold flex items-center space-x-1">
-                                    <i data-lucide="star" class="w-3 h-3 fill-yellow-400 text-yellow-400"></i>
-                                    <span>4.9</span>
-                                 </div>
-                            </div>
-                            <div class="p-5">
-                                <h3 class="text-lg font-bold text-white">Image Classifier</h3>
-                                <p class="text-sm text-[#8B949E] mt-1">by Chen Lu</p>
-                                <div class="mt-4 flex flex-wrap gap-2">
-                                    <span class="bg-[#21262D] text-[#8B949E] text-xs font-semibold px-2.5 py-1 rounded-full">Python</span>
-                                    <span class="bg-[#21262D] text-[#8B949E] text-xs font-semibold px-2.5 py-1 rounded-full">TensorFlow</span>
-                                    <span class="bg-[#21262D] text-[#8B949E] text-xs font-semibold px-2.5 py-1 rounded-full">CNN</span>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Project Card 3 -->
-                        <div class="project-card bg-[#0D1117] rounded-xl shadow-lg border border-[#30363D] overflow-hidden group">
-                           <div class="relative">
-                                <img class="h-48 w-full object-cover" src="https://placehold.co/600x400/161B22/a5b4fc?text=VR+Therapy" alt="MediMind VR Therapy">
-                               <div class="absolute top-3 right-3 bg-black/50 text-white px-2 py-1 rounded-full text-xs font-bold flex items-center space-x-1">
-                                    <i data-lucide="star" class="w-3 h-3 fill-yellow-400 text-yellow-400"></i>
-                                    <span>4.9</span>
-                                </div>
-                            </div>
-                            <div class="p-5">
-                                <h3 class="text-lg font-bold text-white">MediMind VR Therapy</h3>
-                                <p class="text-sm text-[#8B949E] mt-1">by Chloe Lim</p>
-                                <div class="mt-4 flex flex-wrap gap-2">
-                                    <span class="bg-[#21262D] text-[#8B949E] text-xs font-semibold px-2.5 py-1 rounded-full">Unity</span>
-                                    <span class="bg-[#21262D] text-[#8B949E] text-xs font-semibold px-2.5 py-1 rounded-full">C#</span>
-                                    <span class="bg-[#21262D] text-[#8B949E] text-xs font-semibold px-2.5 py-1 rounded-full">VR/AR</span>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Project Card 4 -->
-                        <div class="project-card bg-[#0D1117] rounded-xl shadow-lg border border-[#30363D] overflow-hidden group">
-                           <div class="relative">
-                                <img class="h-48 w-full object-cover" src="https://placehold.co/600x400/161B22/a8a29e?text=FitFlow+Watch" alt="FitFlow Smartwatch App">
-                                <div class="absolute top-3 right-3 bg-black/50 text-white px-2 py-1 rounded-full text-xs font-bold flex items-center space-x-1">
-                                    <i data-lucide="star" class="w-3 h-3 fill-yellow-400 text-yellow-400"></i>
-                                    <span>4.9</span>
-                                </div>
-                            </div>
-                            <div class="p-5">
-                                <h3 class="text-lg font-bold text-white">FitFlow Smartwatch App</h3>
-                                <p class="text-sm text-[#8B949E] mt-1">by Emily Jethwa</p>
-                                <div class="mt-4 flex flex-wrap gap-2">
-                                    <span class="bg-[#21262D] text-[#8B949E] text-xs font-semibold px-2.5 py-1 rounded-full">Flutter</span>
-                                    <span class="bg-[#21262D] text-[#8B949E] text-xs font-semibold px-2.5 py-1 rounded-full">Dart</span>
-                                    <span class="bg-[#21262D] text-[#8B949E] text-xs font-semibold px-2.5 py-1 rounded-full">Firebase</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
+        <!-- Top Ongoing Projects Section -->
+        <section class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="opacity-0 animate-fade-in-up delay-300">
+                    <h2 class="text-3xl font-bold text-white mb-8 flex items-center">
+                        <i data-lucide="trending-up" class="w-8 h-8 mr-3 text-[#39D3BB]"></i>
+                        Top Ongoing Projects
+                    </h2>
+                </div>
+                <div class="opacity-0 animate-fade-in-up delay-400">
+                    <div class="flex space-x-6 overflow-x-auto pb-6 -mx-6 px-6 horizontal-scroll">
+                        <!-- Project Card 1 -->
+                        <div class="project-card flex-shrink-0 w-80 bg-[#161B22] rounded-xl shadow-lg border border-[#30363D] overflow-hidden">
+                            <img class="h-40 w-full object-cover" src="https://placehold.co/600x400/0D1117/39D3BB?text=Analytics+UI" alt="AI-driven Analytics Platform">
+                            <div class="p-5">
+                                <h3 class="text-lg font-bold text-white">AI-driven Analytics Platform</h3>
+                                <p class="text-sm text-[#8B949E] mt-1">by Anisha Bhan</p>
+                                <div class="mt-4">
+                                    <div class="flex justify-between mb-1">
+                                        <span class="text-sm font-medium text-[#8B949E]">In Progress</span>
+                                        <span class="text-sm font-medium text-white">75%</span>
+                                    </div>
+                                    <div class="w-full bg-[#30363D] rounded-full h-2.5">
+                                        <div class="bg-green-500 h-2.5 rounded-full" style="width: 75%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Project Card 2 -->
+                        <div class="project-card flex-shrink-0 w-80 bg-[#161B22] rounded-xl shadow-lg border border-[#30363D] overflow-hidden">
+                            <img class="h-40 w-full object-cover" src="https://placehold.co/600x400/0D1117/3B82F6?text=Eco+App" alt="Eco-Cycle Reminder App">
+                            <div class="p-5">
+                                <h3 class="text-lg font-bold text-white">Eco-Cycle Reminder App</h3>
+                                <p class="text-sm text-[#8B949E] mt-1">by Amit Sharma</p>
+                                <div class="mt-4">
+                                    <div class="flex justify-between mb-1">
+                                        <span class="text-sm font-medium text-[#8B949E]">In Progress</span>
+                                        <span class="text-sm font-medium text-white">40%</span>
+                                    </div>
+                                    <div class="w-full bg-[#30363D] rounded-full h-2.5">
+                                        <div class="bg-yellow-500 h-2.5 rounded-full" style="width: 40%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Project Card 3 -->
+                         <div class="project-card flex-shrink-0 w-80 bg-[#161B22] rounded-xl shadow-lg border border-[#30363D] overflow-hidden">
+                            <img class="h-40 w-full object-cover" src="https://placehold.co/600x400/0D1117/8B949E?text=Robotics" alt="Automated Sorting Bot">
+                            <div class="p-5">
+                                <h3 class="text-lg font-bold text-white">Automated Sorting Bot</h3>
+                                <p class="text-sm text-[#8B949E] mt-1">by Dev Chaturvedi</p>
+                                <div class="mt-4">
+                                    <div class="flex justify-between mb-1">
+                                        <span class="text-sm font-medium text-[#8B949E]">In Progress</span>
+                                        <span class="text-sm font-medium text-white">60%</span>
+                                    </div>
+                                    <div class="w-full bg-[#30363D] rounded-full h-2.5">
+                                        <div class="bg-blue-500 h-2.5 rounded-full" style="width: 60%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Project Card 4 -->
+                        <div class="project-card flex-shrink-0 w-80 bg-[#161B22] rounded-xl shadow-lg border border-[#30363D] overflow-hidden">
+                            <img class="h-40 w-full object-cover" src="https://placehold.co/600x400/0D1117/ef4444?text=Health+Dashboard" alt="Health Monitoring Dashboard">
+                            <div class="p-5">
+                                <h3 class="text-lg font-bold text-white">Health Monitoring Dashboard</h3>
+                                <p class="text-sm text-[#8B949E] mt-1">by Priya Singh</p>
+                                <div class="mt-4">
+                                    <div class="flex justify-between mb-1">
+                                        <span class="text-sm font-medium text-[#8B949E]">In Progress</span>
+                                        <span class="text-sm font-medium text-white">90%</span>
+                                    </div>
+                                    <div class="w-full bg-[#30363D] rounded-full h-2.5">
+                                        <div class="bg-red-500 h-2.5 rounded-full" style="width: 90%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Top Rated Finished Projects Section -->
+        <section class="py-20 bg-[#161B22] border-y border-[#30363D]">
+            <div class="container mx-auto px-6">
+                <div class="opacity-0 animate-fade-in-up delay-500">
+                    <h2 class="text-3xl font-bold text-white mb-8 flex items-center">
+                        <i data-lucide="award" class="w-8 h-8 mr-3 text-yellow-400"></i>
+                        Top Rated Finished Projects
+                    </h2>
+                </div>
+                <div class="opacity-0 animate-fade-in-up" style="animation-delay: 600ms;">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                        <!-- Project Card 1 -->
+                        <div class="project-card bg-[#0D1117] rounded-xl shadow-lg border border-[#30363D] overflow-hidden group">
+                            <div class="relative">
+                                <img class="h-48 w-full object-cover" src="https://placehold.co/600x400/161B22/fb923c?text=FlavorQuest" alt="FlavorQuest">
+                                <div class="absolute top-3 right-3 bg-black/50 text-white px-2 py-1 rounded-full text-xs font-bold flex items-center space-x-1">
+                                    <i data-lucide="star" class="w-3 h-3 fill-yellow-400 text-yellow-400"></i>
+                                    <span>4.9</span>
+                                </div>
+                            </div>
+                            <div class="p-5">
+                                <h3 class="text-lg font-bold text-white">FlavorQuest</h3>
+                                <p class="text-sm text-[#8B949E] mt-1">by Aakash Gupta</p>
+                                <div class="mt-4 flex flex-wrap gap-2">
+                                    <span class="bg-[#21262D] text-[#8B949E] text-xs font-semibold px-2.5 py-1 rounded-full">React</span>
+                                    <span class="bg-[#21262D] text-[#8B949E] text-xs font-semibold px-2.5 py-1 rounded-full">Node.js</span>
+                                    <span class="bg-[#21262D] text-[#8B949E] text-xs font-semibold px-2.5 py-1 rounded-full">MongoDB</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Project Card 2 -->
+                        <div class="project-card bg-[#0D1117] rounded-xl shadow-lg border border-[#30363D] overflow-hidden group">
+                            <div class="relative">
+                                <img class="h-48 w-full object-cover" src="https://placehold.co/600x400/161B22/93c5fd?text=Neural+Net" alt="Deep Learning Image Classifier">
+                                <div class="absolute top-3 right-3 bg-black/50 text-white px-2 py-1 rounded-full text-xs font-bold flex items-center space-x-1">
+                                    <i data-lucide="star" class="w-3 h-3 fill-yellow-400 text-yellow-400"></i>
+                                    <span>4.9</span>
+                                 </div>
+                            </div>
+                            <div class="p-5">
+                                <h3 class="text-lg font-bold text-white">Image Classifier</h3>
+                                <p class="text-sm text-[#8B949E] mt-1">by Chen Lu</p>
+                                <div class="mt-4 flex flex-wrap gap-2">
+                                    <span class="bg-[#21262D] text-[#8B949E] text-xs font-semibold px-2.5 py-1 rounded-full">Python</span>
+                                    <span class="bg-[#21262D] text-[#8B949E] text-xs font-semibold px-2.5 py-1 rounded-full">TensorFlow</span>
+                                    <span class="bg-[#21262D] text-[#8B949E] text-xs font-semibold px-2.5 py-1 rounded-full">CNN</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Project Card 3 -->
+                        <div class="project-card bg-[#0D1117] rounded-xl shadow-lg border border-[#30363D] overflow-hidden group">
+                           <div class="relative">
+                                <img class="h-48 w-full object-cover" src="https://placehold.co/600x400/161B22/a5b4fc?text=VR+Therapy" alt="MediMind VR Therapy">
+                               <div class="absolute top-3 right-3 bg-black/50 text-white px-2 py-1 rounded-full text-xs font-bold flex items-center space-x-1">
+                                    <i data-lucide="star" class="w-3 h-3 fill-yellow-400 text-yellow-400"></i>
+                                    <span>4.9</span>
+                                </div>
+                            </div>
+                            <div class="p-5">
+                                <h3 class="text-lg font-bold text-white">MediMind VR Therapy</h3>
+                                <p class="text-sm text-[#8B949E] mt-1">by Chloe Lim</p>
+                                <div class="mt-4 flex flex-wrap gap-2">
+                                    <span class="bg-[#21262D] text-[#8B949E] text-xs font-semibold px-2.5 py-1 rounded-full">Unity</span>
+                                    <span class="bg-[#21262D] text-[#8B949E] text-xs font-semibold px-2.5 py-1 rounded-full">C#</span>
+                                    <span class="bg-[#21262D] text-[#8B949E] text-xs font-semibold px-2.5 py-1 rounded-full">VR/AR</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Project Card 4 -->
+                        <div class="project-card bg-[#0D1117] rounded-xl shadow-lg border border-[#30363D] overflow-hidden group">
+                           <div class="relative">
+                                <img class="h-48 w-full object-cover" src="https://placehold.co/600x400/161B22/a8a29e?text=FitFlow+Watch" alt="FitFlow Smartwatch App">
+                                <div class="absolute top-3 right-3 bg-black/50 text-white px-2 py-1 rounded-full text-xs font-bold flex items-center space-x-1">
+                                    <i data-lucide="star" class="w-3 h-3 fill-yellow-400 text-yellow-400"></i>
+                                    <span>4.9</span>
+                                </div>
+                            </div>
+                            <div class="p-5">
+                                <h3 class="text-lg font-bold text-white">FitFlow Smartwatch App</h3>
+                                <p class="text-sm text-[#8B949E] mt-1">by Emily Jethwa</p>
+                                <div class="mt-4 flex flex-wrap gap-2">
+                                    <span class="bg-[#21262D] text-[#8B949E] text-xs font-semibold px-2.5 py-1 rounded-full">Flutter</span>
+                                    <span class="bg-[#21262D] text-[#8B949E] text-xs font-semibold px-2.5 py-1 rounded-full">Dart</span>
+                                    <span class="bg-[#21262D] text-[#8B949E] text-xs font-semibold px-2.5 py-1 rounded-full">Firebase</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
-    <!-- Footer -->
-    <footer class="bg-[#161B22] text-[#8B949E]">
-        <div class="container mx-auto px-6 py-12">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <!-- Column 1: Logo & Mission -->
-                <div class="col-span-1 md:col-span-2 lg:col-span-1">
-                     <a href="#" class="flex items-center space-x-2">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="#3b82f6"></path>
-                            <path d="M2 17L12 22L22 17" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                            <path d="M2 12L12 17L22 12" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                        </svg>
-                        <span class="font-bold text-xl text-white">Scaler</span>
-                    </a>
-                    <p class="mt-4 text-sm">Empowering the next generation of tech talent through community and innovation.</p>
-                </div>
-                <!-- Column 2: Links -->
-                <div>
-                    <h4 class="font-semibold text-white">Explore</h4>
-                    <ul class="mt-4 space-y-2 text-sm">
-                        <li><a href="#" class="hover:text-white transition">Home</a></li>
-                        <li><a href="#" class="hover:text-white transition">Projects</a></li>
-                        <li><a href="#" class="hover:text-white transition">People</a></li>
-                    </ul>
-                </div>
-                <!-- Column 3: Links -->
-                <div>
-                    <h4 class="font-semibold text-white">About</h4>
-                    <ul class="mt-4 space-y-2 text-sm">
-                        <li><a href="#" class="hover:text-white transition">About Scaler</a></li>
-                        <li><a href="#" class="hover:text-white transition">Contact</a></li>
-                        <li><a href="#" class="hover:text-white transition">Careers</a></li>
-                    </ul>
-                </div>
-                <!-- Column 4: Links -->
-                <div>
-                    <h4 class="font-semibold text-white">Legal</h4>
-                    <ul class="mt-4 space-y-2 text-sm">
-                        <li><a href="#" class="hover:text-white transition">Privacy Policy</a></li>
-                        <li><a href="#" class="hover:text-white transition">Terms of Service</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="mt-12 border-t border-[#30363D] pt-6 text-center text-sm">
-                <p>&copy; 2025 Scaler. All Rights Reserved.</p>
-            </div>
-        </div>
-    </footer>
+    <!-- Footer -->
+    <footer class="bg-[#161B22] text-[#8B949E]">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Column 1: Logo & Mission -->
+                <div class="col-span-1 md:col-span-2 lg:col-span-1">
+                     <a href="#" class="flex items-center space-x-2">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="#3b82f6"></path>
+                            <path d="M2 17L12 22L22 17" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M2 12L12 17L22 12" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                        <span class="font-bold text-xl text-white">Scaler</span>
+                    </a>
+                    <p class="mt-4 text-sm">Empowering the next generation of tech talent through community and innovation.</p>
+                </div>
+                <!-- Column 2: Links -->
+                <div>
+                    <h4 class="font-semibold text-white">Explore</h4>
+                    <ul class="mt-4 space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-white transition">Home</a></li>
+                        <li><a href="#" class="hover:text-white transition">Projects</a></li>
+                        <li><a href="#" class="hover:text-white transition">People</a></li>
+                    </ul>
+                </div>
+                <!-- Column 3: Links -->
+                <div>
+                    <h4 class="font-semibold text-white">About</h4>
+                    <ul class="mt-4 space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-white transition">About Scaler</a></li>
+                        <li><a href="#" class="hover:text-white transition">Contact</a></li>
+                        <li><a href="#" class="hover:text-white transition">Careers</a></li>
+                    </ul>
+                </div>
+                <!-- Column 4: Links -->
+                <div>
+                    <h4 class="font-semibold text-white">Legal</h4>
+                    <ul class="mt-4 space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-white transition">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-white transition">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-12 border-t border-[#30363D] pt-6 text-center text-sm">
+                <p>&copy; 2025 Scaler. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
 
-    <script>
-		document.addEventListener('DOMContentLoaded', function() {
-            // Initialize Lucide Icons
-            lucide.createIcons();
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Lucide Icons
+            lucide.createIcons();
 
-            // Header scroll effect
-            const header = document.getElementById('main-header');
-            const navTexts = header.querySelectorAll('.nav-text');
-            const navIcons = header.querySelectorAll('.nav-icon');
+            // Header scroll effect
+            const header = document.getElementById('main-header');
+            const navTexts = header.querySelectorAll('.nav-text');
+            const navIcons = header.querySelectorAll('.nav-icon');
 
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) {
-                    header.classList.add('scrolled');
-                } else {
-                    header.classList.remove('scrolled');
-                }
-            });
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
 
-            // Profile menu toggle
-            const profileMenuButton = document.getElementById('profile-menu-button');
-            const profileMenu = document.getElementById('profile-menu');
-            const profileMenuContainer = document.getElementById('profile-menu-container');
+            // Profile menu toggle
+            const profileMenuButton = document.getElementById('profile-menu-button');
+            const profileMenu = document.getElementById('profile-menu');
+            const profileMenuContainer = document.getElementById('profile-menu-container');
 
-            profileMenuButton.addEventListener('click', (event) => {
-                event.stopPropagation();
-                profileMenu.classList.toggle('hidden');
-            });
+            profileMenuButton.addEventListener('click', (event) => {
+                event.stopPropagation();
+                profileMenu.classList.toggle('hidden');
+            });
 
-			// Keyboard accessibility for profile button
-			profileMenuButton.addEventListener('keydown', (e) => {
-				if (e.key === 'Enter' || e.key === ' ') {
-					e.preventDefault();
-					profileMenu.classList.toggle('hidden');
-				} else if (e.key === 'Escape') {
-					profileMenu.classList.add('hidden');
-				}
-			});
+            // Close menu when clicking outside
+            document.addEventListener('click', (event) => {
+                if (!profileMenuContainer.contains(event.target)) {
+                    profileMenu.classList.add('hidden');
+                }
+            });
+            
+            // Trigger entry animations
+            const animatedElements = document.querySelectorAll('.animate-fade-in-up');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        // The class is now added via CSS animation property, this just triggers it
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
 
-            // Close menu when clicking outside
-            document.addEventListener('click', (event) => {
-                if (!profileMenuContainer.contains(event.target)) {
-                    profileMenu.classList.add('hidden');
-                }
-            });
-            
-            // Trigger entry animations
-            const animatedElements = document.querySelectorAll('.animate-fade-in-up');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        // The class is now added via CSS animation property, this just triggers it
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, {
-                threshold: 0.1
-            });
-
-            animatedElements.forEach(el => {
-                el.style.opacity = '0'; // Hide elements initially
-                observer.observe(el);
-            });
-
-			// Mobile menu toggle
-			const mobileMenuButton = document.getElementById('mobile-menu-button');
-			const mobileMenu = document.getElementById('mobile-menu');
-			const mobileOpenIcon = document.getElementById('mobile-menu-open');
-			const mobileCloseIcon = document.getElementById('mobile-menu-close');
-
-			if (mobileMenuButton) {
-				mobileMenuButton.addEventListener('click', () => {
-					const isOpen = mobileMenu.classList.toggle('hidden');
-					// Toggle icons
-					mobileOpenIcon.classList.toggle('hidden');
-					mobileCloseIcon.classList.toggle('hidden');
-					// Update aria-expanded
-					const expanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
-					mobileMenuButton.setAttribute('aria-expanded', (!expanded).toString());
-				});
-			}
-        });
-    </script>
+            animatedElements.forEach(el => {
+                el.style.opacity = '0'; // Hide elements initially
+                observer.observe(el);
+            });
+        });
+    </script>
 </body>
 </html>
